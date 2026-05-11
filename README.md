@@ -49,3 +49,26 @@ online-learning-platform/
 ```
 
 ---
+
+## 🔐 Demo Accounts
+
+| Role | Username | Password |
+|------|----------|----------|
+| *Admin* | admin | admin123 |
+| *User* | demo | demo123 |
+
+---
+
+## 🔌 API Documentation (Brief)
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| /api/courses | GET | Fetch all available courses |
+| /api/auth/login | POST | Authenticate user |
+| /api/enrollments | POST | Register for a course |
+| /api/admin/stats | GET | Platform analytics (Admin only) |
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - feel free to use it for learning or commercial purposes.
