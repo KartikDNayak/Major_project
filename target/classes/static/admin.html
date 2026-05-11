@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - LearnHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-transition">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                LearnHub
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="admin.html" class="nav-link active">Admin</a>
+            </div>
+            <div class="nav-auth" id="nav-auth"></div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div style="background: linear-gradient(135deg, var(--dark-900) 0%, var(--dark-800) 40%, #1e1b4b 100%); color: white; padding: 4rem 2rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -30%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 60%); border-radius: 50%;"></div>
+        <div style="max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;">
+            <h1 style="color: white; font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 0.5rem;">Admin Dashboard</h1>
+            <p style="color: var(--gray-400);">Manage courses and monitor platform analytics</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="section-container">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 grid-cols-4" style="margin-bottom: 3rem;">
+                <div class="card stat-card animate-card-reveal stagger-1">
+                    <div class="stat-value" style="color: var(--primary);" id="admin-stat-courses">0</div>
+                    <div class="stat-label">Total Courses</div>
+                </div>
+                <div class="card stat-card animate-card-reveal stagger-2">
+                    <div class="stat-value" style="color: var(--secondary);" id="admin-stat-users">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="card stat-card animate-card-reveal stagger-3">
+                    <div class="stat-value" style="color: var(--accent);" id="admin-stat-enrollments">0</div>
+                    <div class="stat-label">Enrollments</div>
+                </div>
+                <div class="card stat-card animate-card-reveal stagger-4">
+                    <div class="stat-value" style="color: var(--gray-700);" id="admin-stat-categories">0</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 1.375rem; font-weight: 700;">All Courses</h2>
+                <button class="btn btn-primary" onclick="openCourseModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Add Course
+                </button>
+            </div>
+
+            <!-- Courses Table -->
+            <div style="overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                <table class="admin-table" id="courses-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Instructor</th>
+                            <th>Duration</th>
+                            <th>Lessons</th>
+                            <th>Students</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courses-tbody">
+                        <tr><td colspan="9" style="text-align: center;"><div class="loading-spinner" style="margin: 2rem auto;"></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Modal -->
+    <div class="modal-overlay" id="course-modal">
+        <div class="modal" style="max-width: 720px;">
+            <div class="modal-header">
+                <h2 id="modal-title">Add New Course</h2>
+                <button class="modal-close" onclick="closeCourseModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="course-form">
+                    <input type="hidden" id="course-id">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Title *</label>
+                            <input type="text" class="form-input" id="course-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category *</label>
+                            <input type="text" class="form-input" id="course-category" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description *</label>
+                        <textarea class="form-textarea" id="course-description" required></textarea>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Duration *</label>
+                            <input type="text" class="form-input" id="course-duration" placeholder="e.g., 20 hours" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Instructor *</label>
+                            <input type="text" class="form-input" id="course-instructor" required>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Image URL</label>
+                            <input type="url" class="form-input" id="course-image" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Rating</label>
+                            <input type="number" class="form-input" id="course-rating" min="0" max="5" step="0.1" value="4.5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.625rem; cursor: pointer; padding: 0.5rem 0;">
+                            <input type="checkbox" id="course-featured" style="width: 20px; height: 20px; accent-color: var(--primary);">
+                            <span style="font-size: 0.875rem; font-weight: 600;">Featured Course</span>
+                        </label>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="font-size: 1rem; font-weight: 700;">Lessons</h3>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="addLessonRow()">Add Lesson</button>
+                        </div>
+                        <div id="lessons-container"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeCourseModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveCourse()">Save Course</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses - LearnHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-transition">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                LearnHub
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="my-courses.html" class="nav-link active">My Courses</a>
+            </div>
+            <div class="nav-auth" id="nav-auth"></div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <h1>My Learning Dashboard</h1>
+            <p>Track your progress and continue your learning journey</p>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-sidebar">
+            <div class="dashboard-sidebar-card animate-fade-in-up">
+                <h3>Learning Stats</h3>
+                <div id="learning-stats">
+                    <div class="stat-row">
+                        <span>Enrolled Courses</span>
+                        <span class="font-bold" id="stat-enrolled">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Completed</span>
+                        <span class="font-bold text-secondary" id="stat-completed">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>In Progress</span>
+                        <span class="font-bold text-primary" id="stat-inprogress">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Total Lessons</span>
+                        <span class="font-bold" id="stat-lessons">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Overall Progress</span>
+                        <span class="font-bold text-primary" id="stat-overall">0%</span>
+                    </div>
+                </div>
+            </div>
+            <a href="courses.html" class="btn btn-primary w-full animate-fade-in-up stagger-2">Browse More Courses</a>
+        </div>
+
+        <div>
+            <div style="display: flex; gap: 0.625rem; margin-bottom: 1.5rem;">
+                <button class="filter-tag active" data-filter="all" onclick="filterEnrollments('all')">All</button>
+                <button class="filter-tag" data-filter="active" onclick="filterEnrollments('active')">In Progress</button>
+                <button class="filter-tag" data-filter="completed" onclick="filterEnrollments('completed')">Completed</button>
+            </div>
+
+            <div id="enrollments-list">
+                <div class="loading-spinner"></div>
+            </div>
+
+            <div id="enrollments-empty" class="empty-state hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <h3>No courses yet</h3>
+                <p>Start learning by enrolling in a course</p>
+                <a href="courses.html" class="btn btn-primary" style="margin-top: 1rem;">Browse Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>&copy; 2026 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/my-courses.js"></script>
+</body>
+</html>

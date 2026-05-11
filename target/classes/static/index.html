@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Master New Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-transition">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand animate-fade-in-down">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                LearnHub
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+            </div>
+            <div class="nav-auth" id="nav-auth">
+                <a href="login.html" class="btn btn-ghost btn-sm">Sign In</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-blob"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="animate-hero-text stagger-1">Master New Skills with <span>Expert-Led Courses</span></h1>
+                <p class="animate-hero-text stagger-2">Access thousands of courses in programming, design, data science, and more. Learn at your own pace with interactive lessons and real-world projects.</p>
+                <div class="animate-hero-text stagger-3" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="courses.html" class="btn btn-primary btn-lg">Explore Courses</a>
+                    <a href="login.html" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.25); color: white;">Get Started Free</a>
+                </div>
+                <div class="hero-stats animate-fade-in-up stagger-4">
+                    <div class="hero-stat">
+                        <h3 id="stat-courses">0+</h3>
+                        <p>Courses</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3 id="stat-instructors">0+</h3>
+                        <p>Expert Instructors</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h3 id="stat-students">0+</h3>
+                        <p>Students</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses -->
+    <section class="section">
+        <div class="section-header">
+            <div class="animate-fade-in-up">
+                <h2 class="section-title">Featured Courses</h2>
+                <p class="section-subtitle">Hand-picked courses to get you started</p>
+            </div>
+            <a href="courses.html" class="btn btn-outline animate-fade-in-up stagger-2">View All</a>
+        </div>
+        <div class="section-container">
+            <div class="grid grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4" id="featured-courses">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section" style="background: white;">
+        <div class="section-header">
+            <div class="animate-fade-in-up">
+                <h2 class="section-title">Browse by Category</h2>
+                <p class="section-subtitle">Find courses that match your interests</p>
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="grid grid-cols-2 grid-cols-3 grid-cols-4" id="categories-grid">
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="section-header" style="justify-content: center; text-align: center;">
+            <div class="animate-fade-in-up">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Start learning in three simple steps</p>
+            </div>
+        </div>
+        <div class="section-container">
+            <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem;">
+                <div class="card step-card animate-card-reveal stagger-1">
+                    <div class="step-number">1</div>
+                    <h3>Browse Courses</h3>
+                    <p>Explore our extensive catalog of courses across various categories and skill levels.</p>
+                </div>
+                <div class="card step-card animate-card-reveal stagger-2">
+                    <div class="step-number" style="color: var(--secondary); background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05)); border-color: rgba(16,185,129,0.15);">2</div>
+                    <h3>Enroll & Learn</h3>
+                    <p>Enroll in courses that interest you and start learning with video lessons and exercises.</p>
+                </div>
+                <div class="card step-card animate-card-reveal stagger-3">
+                    <div class="step-number" style="color: var(--accent); background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(245,158,11,0.05)); border-color: rgba(245,158,11,0.15);">3</div>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your learning journey, complete lessons, and earn certificates upon completion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+                        LearnHub
+                    </div>
+                    <p>Empowering learners worldwide with quality education and interactive learning experiences. Start your journey today.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <a href="courses.html">All Courses</a>
+                    <a href="my-courses.html">My Learning</a>
+                    <a href="login.html">Get Started</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Community</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
