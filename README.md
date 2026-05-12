@@ -47,7 +47,32 @@ online-learning-platform/
 │   │           ├── css/style.css              # Custom Design System
 │   │           └── js/*.js                    # Frontend Logic & API Integration
 ```
+## 🛠️ Installation & Setup
 
+### Prerequisites
+- **Java 17** or higher
+- **Maven 3.8+**
+
+### Quick Start (H2 In-Memory)
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd online-learning-platform
+   ```
+2. **Run the application**:
+   ```bash
+   mvn spring-boot:run
+   ```
+3. **Access the platform**:
+   Open `http://localhost:8080` in your browser.
+
+### MySQL Configuration (Optional)
+1. Create a database: `CREATE DATABASE learningdb;`
+2. Update `src/main/resources/application-mysql.properties` with your MySQL user/password.
+3. Run with the MySQL profile:
+   ```bash
+   mvn spring-boot:run -Dspring-boot.run.profiles=mysql
+   ```
 ---
 
 ## 🔐 Demo Accounts
