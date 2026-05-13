@@ -7,28 +7,28 @@ LearnHub is a production-grade, full-stack EdTech platform designed for seamless
 ## 📸 Screenshots
 
 ### HomePage
-![LearnHub Homepage](ss/home.png)
+![LearnHub Homepage](SS/home.png)
 
 ### LoginPage
-![LearnHub Homepage](ss/login.png)
+![LearnHub Homepage](SS/login.png)
 
 ### AdminDashboard
-![LearnHub Homepage](ss/dashboard1.png)
+![LearnHub Homepage](SS/dashboard1.png)
 
 ### StudentDashboard
-![LearnHub Homepage](ss/dashboard.png)
+![LearnHub Homepage](SS/dashboard.png)
 
 ### CourseCreationPage
-![LearnHub Homepage](ss/course.png)
+![LearnHub Homepage](SS/course.png)
 
 ### CoursePage
-![LearnHub Homepage](ss/courses.png)
+![LearnHub Homepage](SS/courses.png)
 
 ### CourseProgress
-![LearnHub Homepage](ss/progress.png)
+![LearnHub Homepage](SS/progress.png)
 
 ### Certification
-![LearnHub Homepage](ss/certificate.png)
+![LearnHub Homepage](SS/certificate.png)
 
 
 ---
@@ -99,7 +99,7 @@ online-learning-platform/
    mvn spring-boot:run
    ```
 3. **Access the platform**:
-   Open `http://localhost:8080` in your browser.
+   Open `http://localhost:8088` in your browser.
 
 ### MySQL Configuration (Optional)
 1. Create a database: `CREATE DATABASE learningdb;`
