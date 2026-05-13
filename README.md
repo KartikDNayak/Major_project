@@ -1,3 +1,38 @@
+# LearnHub - Online Learning Platform
+
+LearnHub is a production-grade, full-stack EdTech platform designed for seamless online learning. Built with a robust **Java Spring Boot** backend and a dynamic, responsive **HTML/CSS/JavaScript** frontend.
+
+---
+
+## 📸 Screenshots
+
+### HomePage
+![LearnHub Homepage](ss/home.png)
+
+### LoginPage
+![LearnHub Homepage](ss/login.png)
+
+### AdminDashboard
+![LearnHub Homepage](ss/dashboard1.png)
+
+### StudentDashboard
+![LearnHub Homepage](ss/dashboard.png)
+
+### CourseCreationPage
+![LearnHub Homepage](ss/course.png)
+
+### CoursePage
+![LearnHub Homepage](ss/courses.png)
+
+### CourseProgress
+![LearnHub Homepage](ss/progress.png)
+
+### Certification
+![LearnHub Homepage](ss/certificate.png)
+
+
+---
+
 ## 🚀 Features
 
 ### 🎓 Student Experience
