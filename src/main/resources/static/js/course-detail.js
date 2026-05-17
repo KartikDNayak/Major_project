@@ -295,8 +295,39 @@ function closeCertificate() {
 }
 
 function downloadCertificate() {
-    showToast('Certificate downloaded! (Simulated)', 'success');
-    closeCertificate();
+    if (typeof html2pdf === 'undefined') {
+        showToast('Download library not loaded. Please try again later.', 'error');
+        return;
+    }
+
+    const element = document.getElementById('certificate-to-download');
+    
+    const opt = {
+        margin:       10,
+        filename:     `${currentCourse.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_certificate.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
+    };
+    
+    const downloadBtn = document.querySelector('#certificate-modal .modal-footer .btn-primary');
+    const originalText = downloadBtn.innerHTML;
+    
+    // Add simple loading text
+    downloadBtn.innerHTML = 'Downloading...';
+    downloadBtn.disabled = true;
+
+    html2pdf().set(opt).from(element).save().then(() => {
+        showToast('Certificate downloaded successfully!', 'success');
+        downloadBtn.innerHTML = originalText;
+        downloadBtn.disabled = false;
+        closeCertificate();
+    }).catch(err => {
+        console.error('Error generating PDF:', err);
+        showToast('Failed to download certificate.', 'error');
+        downloadBtn.innerHTML = originalText;
+        downloadBtn.disabled = false;
+    });
 }
 
 // Navbar scroll effect
